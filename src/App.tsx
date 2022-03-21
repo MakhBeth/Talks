@@ -68,6 +68,7 @@ function App() {
           </Box>
           <Box>
             <Heading textAlign='left'>Chi sono</Heading>
+            <Text>Mi trovate ovunque col nick: @makhbeth</Text>
             <UnorderedList>
               <ListItem>Frontend @Tot.money</ListItem>
               <ListItem>CSS enthusiast</ListItem>
@@ -607,6 +608,111 @@ export const neutral: Colors = {
             \`
 
           `}</CodePane>
+        </FlexBox>
+      </Slide>
+
+      <Slide>
+        <FlexBox height="100%" flexDirection="column">
+          <Heading>Trick AND Treats</Heading>
+        </FlexBox>
+      </Slide>
+
+      <Slide>
+        <FlexBox height="100%" flexDirection="column">
+          <Heading>Media Query Hook</Heading>
+          * short version, for long one, ask me!
+        </FlexBox>
+      </Slide>
+      
+      <Slide>
+        <FlexBox height="100%" flexDirection="column">
+          <CodePane language='typescript'>
+          {`
+export const breakpoints = {
+  min: 0,
+  xxxs: 480,
+  xxs: 600,
+  xs: 720,
+  sm: 840,
+  md: 960,
+  lg: 1024,
+  xl: 1248,
+  xxl: 1440,
+  max: 1920
+}
+
+export const emBreakpoints = pipe(
+  breakpoints,
+  R.map((value) => emCalc(value))
+)
+          `}
+          </CodePane>
+        </FlexBox>
+      </Slide>
+
+      <Slide>
+        <FlexBox height="100%" flexDirection="column">
+          <CodePane language='typescript'>
+          {`
+<div css={css\`
+  💲{mq.xs} {
+    display: none;
+  }
+\`}/>
+          `}
+          </CodePane>
+        </FlexBox>
+      </Slide>
+
+      <Slide>
+        <FlexBox height="100%" flexDirection="column">
+          <CodePane language='typescript'>
+          {`
+export function useMedia (query: string): boolean {
+  const [matches, setMatches] = useState(false)
+  const [media, setMedia] = useState<MediaQueryList | null>(null)
+  useEffect(() => {
+    const media = window.matchMedia(query)
+    setMedia(media)
+  }, [])
+  useEffect(() => {
+    if (!media || !media.addEventListener) return
+    if (media.matches !== matches) setMatches(media.matches)
+    const listener = () => { setMatches(media.matches) }
+    media.addEventListener('change', listener)
+    return () => media.removeEventListener('change', listener)
+  }, [matches, query, media])
+  return matches
+}
+          `}
+          </CodePane>
+        </FlexBox>
+      </Slide>
+
+      <Slide>
+        <FlexBox height="100%" flexDirection="column">
+          <CodePane language='typescript'>
+          {`
+          import { mq, useMedia } from './previousSlide'
+          
+          export function useMediaQuery (bp: keyof typeof mq): boolean {
+            const query = mq[bp].replace('@media ', '')
+            return useMedia(query)
+          }
+
+          // use it like:
+          const Component: VFC = () => {
+            const mq = useMediaQuery('md')
+            return <div>{mq ? 1 : 2}</div>
+          }
+          `}
+          </CodePane>
+        </FlexBox>
+      </Slide>
+
+      <Slide>
+        <FlexBox height="100%" flexDirection="column">
+          <Heading>SearchBar</Heading>
         </FlexBox>
       </Slide>
     </Deck>
