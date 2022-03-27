@@ -1,7 +1,7 @@
 /* eslint-disable import/no-webpack-loader-syntax */
 /** @jsxImportSource @emotion/react */
-import React, { useState } from 'react';
-import { ListItem, Deck, Slide, Heading, Progress, FlexBox, Box, FullScreen, Grid, Text, UnorderedList, Appear, OrderedList, CodePane } from 'spectacle';
+import React, { useContext, useState } from 'react';
+import { DeckContext, ListItem, Deck, Slide, Heading, Progress, FlexBox, Box, FullScreen, Grid, Text, UnorderedList, Appear, OrderedList, CodePane, useMousetrap } from 'spectacle';
 import { css, Global, keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 
@@ -71,9 +71,18 @@ const rotate = keyframes`
   }
 `
 
-function App() {
+function App() {return <Deck template={template}><Pres /></Deck>}
+
+function Pres() {
+  const { regressSlide, stepForward } = useContext(DeckContext)
+  useMousetrap({
+      up: () => regressSlide(),
+      down: () => stepForward()
+    },
+  []
+  );
   return (
-    <Deck template={template}>
+    <>
       <Global styles={css`* {box-sizing: border-box; max-width: 100%;}`} />
       <Slide>
         <FlexBox height="100%" flexDirection="column">
@@ -81,6 +90,7 @@ function App() {
         </FlexBox>
       </Slide>
       <Slide>
+
         <FlexBox height="100%" flexDirection="column">
           <Grid gridTemplateColumns="1fr 2fr" gridColumnGap={15}>
           <Box>
@@ -203,7 +213,7 @@ export const neutral: Colors = {
           <Grid gridTemplateColumns="50% 50%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
             <Box>
               <CodePane language='js' highlightRanges={[1, 8]}>{`
-                cons style = css\`
+                const style = css\`
                   color: pink;
                   padding: 1rem;
                   justify-content: center;
@@ -907,8 +917,8 @@ const Search = () => {
             <Appear><ListItem>Gaia <small>per avermi fatto uscire dalle comfort zone, tutte le comfort zone</small></ListItem></Appear>
           </UnorderedList>
         </FlexBox>
-      </Slide>
-    </Deck>
+        </Slide>
+        </>
   );
 }
 export default App;
