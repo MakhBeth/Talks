@@ -1,9 +1,29 @@
 /* eslint-disable import/no-webpack-loader-syntax */
 /** @jsxImportSource @emotion/react */
-import React from 'react';
+import React, { useState } from 'react';
 import { ListItem, Deck, Slide, Heading, Progress, FlexBox, Box, FullScreen, Grid, Text, UnorderedList, Appear, OrderedList, CodePane } from 'spectacle';
 import { css, Global, keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
+
+const friends = ['Bruce Wayne', 'Michele Brucia', 'Way Home', 'Michele Wayne', 'Bruce Banner', 'Bruce Lee']
+const mkSearchable = (e: string) => e.replace(/\s/g, '').toLowerCase()
+const Search = () => {
+  const [s, setS] = useState('')
+  return <div css={css`
+    ul li[data-searchablefor*="${mkSearchable(s)}"] {color: pink; text-decoration: underline;}
+  `}>
+    <input placeholder="cerca" 
+      type="search" 
+      css={css`font-size: 2rem; border: 1px solid black; border-radius: 0.5rem; padding: 0.5rem;`} 
+      onChange={({target}) => setS(target.value)} 
+    />
+    <UnorderedList>
+      {friends.map(e => 
+        <li key={e} data-searchablefor={mkSearchable(e)}>{e}</li>)
+      }
+    </UnorderedList>
+  </div>
+}
 
 const template = () => (
   <FlexBox
@@ -86,7 +106,7 @@ function App() {
         <Appear><ListItem>Come mai? <small>- ma soprattutto perché?</small></ListItem></Appear>
         <Appear><ListItem>Cos'è? <small>- oltre al readme c'è di più</small></ListItem></Appear>
         <Appear><ListItem>Trick AND treats!</ListItem></Appear>
-        <Appear><ListItem>Lessons learned <small>- cosa mi è piaciuto, cosa no</small></ListItem></Appear>
+        <Appear><ListItem>È tutto oro quello che luccica?<small>- lessons learned</small></ListItem></Appear>
         <Appear><ListItem>Cosa c'è lì fuori? <small>- il prossimo tool!</small></ListItem></Appear>
         </OrderedList>
       </Slide>
@@ -123,7 +143,8 @@ function App() {
       </Slide>
       <Slide backgroundImage="url(/images/pgprmale.png)">
       </Slide>
-      <Slide backgroundImage="url(/images/pgprend.png)">
+      <Slide backgroundImage="url(/images/pgprend.png)" css={css`position: fixed;`}>
+        <iframe src="https://piccologuaioaportaromana.com/" title='piccolo' css={css`position: absolute; top: 0; left: 0; bottom: 0; right: 0; border: none; width: 100vw; height: 100vh;`} />
       </Slide>
       <Slide>
         <CodePane language="jsx" highlightRanges={[[2, 6], [7, 13], [14, 19], [20, 23]]}>
@@ -175,6 +196,40 @@ export const neutral: Colors = {
       <Slide>
         <FlexBox height="100%" flexDirection="column">
           <Heading>Cos'è?</Heading>
+        </FlexBox>
+      </Slide>
+      <Slide>
+        <FlexBox height="100%" flexDirection="column">
+          <Grid gridTemplateColumns="50% 50%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
+            <Box>
+              <CodePane language='js' highlightRanges={[1, 8]}>{`
+                cons style = css\`
+                  color: pink;
+                  padding: 1rem;
+                  justify-content: center;
+                  align-items: center;
+                  font-weight: bold;
+                  font-size: 3rem;
+                \`
+                const element = document.createElement("div")
+                element.innerText = "CSS DAY!!!"
+                element.classList.add(style)
+                document.body.appendChild(element)
+              `}</CodePane>
+            </Box>
+            <Box css={css`justify-content: center; align-items: center; display: flex;`}>
+                <div 
+                  css={css`
+                    color: pink;
+                    padding: 1rem;
+                    justify-content: center;
+                    align-items: center;
+                    font-weight: bold;
+                    font-size: 3rem;
+                  `}>
+                  CSS DAY!!!
+                </div></Box>
+          </Grid>
         </FlexBox>
       </Slide>
       <Slide>
@@ -279,7 +334,8 @@ export const neutral: Colors = {
       </Slide>
       <Slide>
         <FlexBox height="100%" flexDirection="column">
-          <Heading>Ma c'è un plugin per tutto!</Heading>
+          <Text>Il senso non era non dare un nome alle cose?</Text>
+          <Appear><Heading>Ma c'è un plugin per tutto!</Heading></Appear>
           <Appear css={css`text-align: center;`}>
             <div css={css`text-decoration: underline; margin-bottom: 1rem;`}>https://emotion.sh/docs/@emotion/babel-plugin#labelformat</div><br />
             <CodePane language='javascript' showLineNumbers={false}>{`const brownStyles = css({ color: 'brown' })`}</CodePane>
@@ -453,7 +509,7 @@ export const neutral: Colors = {
                 const a = css\`color: red; border: 1px solid pink;\`
                 const b = css\`color: pink; padding: 1rem;\`
                 <div css={[a, b]}>CSSDAY</div>
-                <div css={css\`${a}${b}\`}>CSSDAY</div>
+                <div css={css\`💲{a}💲{b}\`}>CSSDAY</div>
               `}</CodePane>
             </Box>
             <Box css={css`justify-content: center; align-items: center; display: flex; transform: scale(2);`}>
@@ -466,9 +522,14 @@ export const neutral: Colors = {
       <Slide>
         <FlexBox height="100%" flexDirection="column">
           <img src="/images/inspect3.png" alt="inspect" />
+          <Appear><Text>Classi ripetute? E le performance??!1!</Text></Appear>
         </FlexBox>
       </Slide>
 
+      <Slide>
+        <Heading>Pausa Gatto</Heading>
+        <img src="/images/catback.gif" alt="pausa gatto" />
+      </Slide>
       <Slide>
         <FlexBox height="100%" flexDirection="column">
           <Heading>Nesting & Parent selector</Heading>
@@ -640,11 +701,27 @@ export const breakpoints = {
   xxl: 1440,
   max: 1920
 }
+          `}
+          </CodePane>
+          https://github.com/MakhBeth/js-to-scss
+        </FlexBox>
+      </Slide>
+      <Slide>
+        <FlexBox height="100%" flexDirection="column">
+          <CodePane language='typescript'>
+          {`
+export const emBreakpoints = Object.keys(breakpoints)
+  .reduce((aggr, key) => {
+      aggr[key] = emCalc(breakpoints[key])
+      return aggr
+  }, {}
+)
 
-export const emBreakpoints = pipe(
-  breakpoints,
+// FP-TS version
+export const emBreakpoints = pipe(breakpoints,
   R.map((value) => emCalc(value))
 )
+
           `}
           </CodePane>
         </FlexBox>
@@ -666,7 +743,7 @@ export const emBreakpoints = pipe(
 
       <Slide>
         <FlexBox height="100%" flexDirection="column">
-          <CodePane language='typescript'>
+          <CodePane language='typescript' highlightRanges={[5]}>
           {`
 export function useMedia (query: string): boolean {
   const [matches, setMatches] = useState(false)
@@ -713,6 +790,122 @@ export function useMedia (query: string): boolean {
       <Slide>
         <FlexBox height="100%" flexDirection="column">
           <Heading>SearchBar</Heading>
+        </FlexBox>
+      </Slide>
+
+      <Slide>
+        <FlexBox height="100%" flexDirection="column">
+          <Search />
+        </FlexBox>
+      </Slide>
+
+      <Slide>
+        <FlexBox height="100%" flexDirection="column">
+          <CodePane language='tsx' highlightRanges={[[1,2], [4], [11], [6]]}>
+            {`
+const friends = ['Bruce Wayne','Michele Brucia','Way Home','Michele Wayne','Bruce Banner','Bruco Lì']
+const mkSearchable = (e: string) => e.replace(/s/g, '').toLowerCase()
+const Search = () => {
+  const [s, setS] = useState('')
+  return <div css={css\`
+    ul li[data-searchablefor*="💲{mkSearchable(s)}"] {color: pink; text-decoration: underline;}
+  \`}>
+    <input 
+    type="search" 
+      placeholder="cerca" 
+      onChange={({target}) => setS(target.value)} 
+    />
+    <UnorderedList>
+      {friends.map(e => 
+        <ListItem key={e} data-searchablefor={mkSearchable(e)}>{e}</ListItem>)
+      }
+    </UnorderedList>
+  </div>
+}`}
+          </CodePane>
+        </FlexBox>
+      </Slide>
+
+      <Slide>
+        <FlexBox height="100%" flexDirection="column">
+          <Heading>È tutto oro quello che luccica?</Heading>
+          <Appear><Text>NO!</Text></Appear>
+        </FlexBox>
+      </Slide>
+
+      <Slide>
+        <FlexBox height="100%" flexDirection="column">
+          <Heading>Cosa non mi è piaciuto?</Heading>
+          <OrderedList>
+            <Appear><ListItem>Runtime: veloce ma presente</ListItem></Appear>
+            <Appear><ListItem>Updates: fragile</ListItem></Appear>
+            <Appear><ListItem>Labels non sempre perfette</ListItem></Appear>
+          </OrderedList>
+        </FlexBox>
+      </Slide>
+
+      <Slide>
+        <FlexBox height="100%" flexDirection="column">
+          <Heading>Per cosa non lo userei?</Heading>
+          <OrderedList>
+            <Appear><ListItem>Siti editoriali con poche pagine mastro</ListItem></Appear>
+            <Appear><ListItem>Design Systems generici</ListItem></Appear>
+            <Appear><ListItem>Ambienti non JS centrici</ListItem></Appear>
+          </OrderedList>
+        </FlexBox>
+      </Slide>
+
+      <Slide>
+        <FlexBox height="100%" flexDirection="column">
+          <Heading>Ma allora perchè lo usi?</Heading>
+          <OrderedList>
+            <Appear><ListItem>Landing page</ListItem></Appear>
+            <Appear><ListItem>SSR/SSG (Next, Nuxt, Gatsby ecc...)</ListItem></Appear>
+            <Appear><ListItem>React CRUD app con sezioni "atomiche"</ListItem></Appear>
+          </OrderedList>
+        </FlexBox>
+      </Slide>
+
+      <Slide>
+        <FlexBox height="100%" flexDirection="column">
+          <Heading>NON ESISTE IL SILVER BULLET!</Heading>
+        </FlexBox>
+      </Slide>
+
+      <Slide>
+        <FlexBox height="100%" flexDirection="column">
+          <Heading>Cosa voglio provare la prossima volta?</Heading>
+        </FlexBox>
+      </Slide>
+
+      <Slide backgroundColor='white'>
+        <FlexBox height="100%" flexDirection="column">
+          <img src="/images/vanilla.png" alt="vanilla extract" />
+        </FlexBox>
+      </Slide>
+
+      <Slide backgroundColor='white'>
+        <FlexBox height="100%" flexDirection="column">
+          <img src="/images/sprinkles.png" alt="sprinkles" />
+        </FlexBox>
+      </Slide>
+
+      <Slide>
+        <FlexBox height="100%" flexDirection="column">
+          <Heading>Uscire sempre dalla comfort zone!</Heading>
+          <Appear><Text>Per crearne di nuove 😁</Text></Appear>
+        </FlexBox>
+      </Slide>
+
+      <Slide>
+        <FlexBox height="100%" flexDirection="column">
+          <img src="/images/thankyou.gif" alt="grazie" css={css`max-height: 10vw; margin-bottom: 0;`} />
+          <Heading>Grazie</Heading>
+          <UnorderedList css={css`margin-top: 0`}>
+            <Appear><ListItem>Matteo <small>per avermi fatto uscire dalla comfort zone e tornare sul palco</small></ListItem></Appear>
+            <Appear><ListItem>Claudia <small>per avermi fatto uscire dalla comfort zone e dato una figlia</small></ListItem></Appear>
+            <Appear><ListItem>Gaia <small>per avermi fatto uscire dalle comfort zone, tutte le comfort zone</small></ListItem></Appear>
+          </UnorderedList>
         </FlexBox>
       </Slide>
     </Deck>
