@@ -83,7 +83,7 @@ function Pres() {
   );
   return (
     <>
-      <Global styles={css`* {box-sizing: border-box; max-width: 100%;}`} />
+      <Global styles={css`* {box-sizing: border-box; max-width: 100%; code { font-size: 1.8rem; }}`} />
       <Slide>
         <FlexBox height="100%" flexDirection="column">
           <Heading>Tu chiamalo se vuoi <em>EmotionJs</em></Heading>
@@ -157,31 +157,19 @@ function Pres() {
         <iframe src="https://piccologuaioaportaromana.com/" title='piccolo' css={css`position: absolute; top: 0; left: 0; bottom: 0; right: 0; border: none; width: 100vw; height: 100vh;`} />
       </Slide>
       <Slide>
-        <CodePane language="jsx" highlightRanges={[[2, 6], [7, 13], [14, 19], [20, 23]]}>
+        <CodePane language="jsx">
           {`
 export const neutral: Colors = {
-  main: {
-    lowest: '#1FB8A1',
-    low: '#70EEDB',
-    neutral: '#28EBCD',
+  main: { 
+    lowest: '#1FB8A1', low: '#70EEDB', neutral: '#28EBCD'
   },
   neutral: {
-    lowest: '#202020',
-    low: '#202020',
-    neutral: '#DEDEDE',
-    high: '#F7F7F7',
-    highest: '#ffffff',
+    lowest: '#202020', low: '#202020', neutral: '#DEDEDE', high: '#F7F7F7', highest: '#ffffff'
   },
   skin: {
-    lowest: '#BA926F',
-    low: '#F3DCBC',
-    neutral: '#FFEEDC',
-    accent: '#EDA6B4',
+    lowest: '#BA926F', low: '#F3DCBC', neutral: '#FFEEDC', accent: '#EDA6B4'
   },
-  accent: {
-    neutral: '#F6D65D',
-    low: '#CCAA3E',
-  }
+  accent: { neutral: '#F6D65D', low: '#CCAA3E' }
 }`}
         </CodePane>
       </Slide>
@@ -210,8 +198,8 @@ export const neutral: Colors = {
       </Slide>
       <Slide>
         <FlexBox height="100%" flexDirection="column">
-          <Grid gridTemplateColumns="50% 50%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
-            <Box>
+          <Grid gridTemplateColumns="70% 30%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
+            <Box >
               <CodePane language='js' highlightRanges={[1, 8]}>{`
                 const style = css\`
                   color: pink;
@@ -244,7 +232,7 @@ export const neutral: Colors = {
       </Slide>
       <Slide>
         <FlexBox height="100%" flexDirection="column">
-          <Grid gridTemplateColumns="50% 50%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
+          <Grid gridTemplateColumns="70% 30%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
             <Box>
               <CodePane language='jsx' highlightRanges={[2]}>{`
                 <div 
@@ -283,7 +271,7 @@ export const neutral: Colors = {
 
       <Slide>
         <FlexBox height="100%" flexDirection="column">
-          <Grid gridTemplateColumns="50% 50%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
+          <Grid gridTemplateColumns="70% 30%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
             <Box>
               <CodePane language='jsx' highlightRanges={[3]}>{`
                 <div 
@@ -324,7 +312,7 @@ export const neutral: Colors = {
 
       <Slide>
         <FlexBox height="100%" flexDirection="column">
-          <Grid gridTemplateColumns="50% 50%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
+          <Grid gridTemplateColumns="70% 30%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
             <Box>
               <CodePane language='jsx' highlightRanges={[3]}>{`
                 const CSSDAY = css\`...\`
@@ -350,15 +338,15 @@ export const neutral: Colors = {
             <div css={css`text-decoration: underline; margin-bottom: 1rem;`}>https://emotion.sh/docs/@emotion/babel-plugin#labelformat</div><br />
             <CodePane language='javascript' showLineNumbers={false}>{`const brownStyles = css({ color: 'brown' })`}</CodePane>
             <Text textAlign="center">⬇</Text>
-            <CodePane language='javascript' showLineNumbers={false}>{`const brownStyles = /*#__PURE__*/ css({ color: 'brown' }, 'label:brownStyles;')`}</CodePane>
+            <CodePane language='javascript' showLineNumbers={false}>{`const brownStyles = css({ color: 'brown' }, 'label:brownStyles;')`}</CodePane>
           </Appear>
         </FlexBox>
       </Slide>
 
       <Slide>
-        <Heading>REACT!</Heading>
+        <Text css={css`text-align: center;`}>REACT!</Text>
         <FlexBox>
-          <Grid gridTemplateColumns="50% 50%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
+          <Grid gridTemplateColumns="70% 30%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
             <Box>
               <CodePane language='jsx' highlightRanges={[[1], [3]]}>{`
                 /** @jsxImportSource @emotion/react */
@@ -408,7 +396,7 @@ export const neutral: Colors = {
       <Slide>
         <Heading>Object styles!</Heading>
         <FlexBox>
-          <Grid gridTemplateColumns="50% 50%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
+          <Grid gridTemplateColumns="70% 30%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
             <Box>
               <CodePane language='jsx'>{`
                   <div 
@@ -444,7 +432,7 @@ export const neutral: Colors = {
       <Slide>
         <Heading>Styled components</Heading>
         <FlexBox>
-          <Grid gridTemplateColumns="50% 50%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
+          <Grid gridTemplateColumns="70% 30%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
             <Box>
               <CodePane language='jsx' highlightRanges={[[1], [9]]}>{`
                 const Styled = styled.div\`
@@ -468,7 +456,7 @@ export const neutral: Colors = {
       <Slide>
         <Heading>Composition</Heading>
         <FlexBox>
-          <Grid gridTemplateColumns="50% 50%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
+          <Grid gridTemplateColumns="70% 30%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
             <Box>
               <CodePane language='jsx'>{`
               <Styled className='qualcosa' css={[
@@ -513,7 +501,7 @@ export const neutral: Colors = {
 
       <Slide>
         <FlexBox height="100%" flexDirection="column">
-          <Grid gridTemplateColumns="50% 50%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
+          <Grid gridTemplateColumns="70% 30%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
             <Box>
               <CodePane language='jsx'>{`
                 const a = css\`color: red; border: 1px solid pink;\`
@@ -548,21 +536,17 @@ export const neutral: Colors = {
 
       <Slide>
         <FlexBox height="100%" flexDirection="column">
-          <Grid gridTemplateColumns="50% 50%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
+          <Grid gridTemplateColumns="70% 30%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
             <Box>
-              <CodePane language='jsx' highlightRanges={[[1, 18], [15, 17],[5, 7], [10, 12]]}>{`
+              <CodePane language='jsx' highlightRanges={[[1, 14], [11, 13],[5], [8]]}>{`
               <div css={css\`
                 font-size: 2rem;
                 text-align: center;
                 color: pink;
-                section, span {
-                  display: inline;
-                }
+                section, span { display: inline; }
                 div {
                   color: white;
-                  &:first-of-type {
-                    font-size: 1rem;
-                  }
+                  &:first-of-type { font-size: 1rem; }
                 }
               \`}>
                 <div>This is</div>
@@ -600,7 +584,7 @@ export const neutral: Colors = {
       <Slide>
         <Heading>Animation</Heading>
         <FlexBox>
-          <Grid gridTemplateColumns="50% 50%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
+          <Grid gridTemplateColumns="70% 30%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
             <Box>
               <CodePane language='jsx' highlightRanges={[[1, 8], [10]]}>{`
                 const rotate = keyframes\`
@@ -628,7 +612,7 @@ export const neutral: Colors = {
       <Slide>
         <Heading>Media Queries</Heading>
         <FlexBox>
-          <Grid gridTemplateColumns="50% 50%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
+          <Grid gridTemplateColumns="70% 30%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
             <Box>
               <CodePane language='jsx' highlightRanges={[3, 5]}>{`
                 <Styled css={css\`
@@ -817,20 +801,17 @@ const friends = ['Bruce Wayne','Michele Brucia','Way Home','Michele Wayne','Bruc
 const mkSearchable = (e: string) => e.replace(/s/g, '').toLowerCase()
 const Search = () => {
   const [s, setS] = useState('')
-  return <div css={css\`
+  return (<div css={css\`
     ul li[data-searchablefor*="💲{mkSearchable(s)}"] {color: pink; text-decoration: underline;}
   \`}>
-    <input 
-    type="search" 
-      placeholder="cerca" 
-      onChange={({target}) => setS(target.value)} 
-    />
+    <input type="search" onChange={({target}) => setS(target.value)}  />
     <UnorderedList>
       {friends.map(e => 
-        <ListItem key={e} data-searchablefor={mkSearchable(e)}>{e}</ListItem>)
-      }
+        <ListItem key={e} data-searchablefor={mkSearchable(e)}>
+          {e}
+        </ListItem>)}
     </UnorderedList>
-  </div>
+  </div>)
 }`}
           </CodePane>
         </FlexBox>
@@ -869,7 +850,7 @@ const Search = () => {
         <FlexBox height="100%" flexDirection="column">
           <Heading>Ma allora perchè lo usi?</Heading>
           <OrderedList>
-            <Appear><ListItem>Landing page</ListItem></Appear>
+            <Appear><ListItem>Landing page (o slide)</ListItem></Appear>
             <Appear><ListItem>SSR/SSG (Next, Nuxt, Gatsby ecc...)</ListItem></Appear>
             <Appear><ListItem>React CRUD app con sezioni "atomiche"</ListItem></Appear>
           </OrderedList>
