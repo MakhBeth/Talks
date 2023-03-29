@@ -67,3 +67,269 @@
 .reveal .justify-start { justify-content: flex-start; }
 .reveal .justify-center { justify-content: center; }
 .reveal .justify-end { justify-content: flex-end; }
+
+@keyframes glow {
+  from {
+    color: #FFFFFF;
+  } to {
+    color: #FFAA00;
+  }
+} 
+/* My Code */
+
+.visuallyHidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px !important;
+  overflow: hidden;
+  padding: 0;
+  position: fixed;
+  top: 100%;
+  width: 1px !important;
+}
+
+.rating {
+  --bcg: #333;
+  --cheeks: #333;
+  --shadow: #333;
+
+
+  filter: drop-shadow(0px 0px 10px #fff);
+  color: transparent;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 0 0.5em;
+  height: 100%;
+  line-height: 0;
+  align-items: center;
+  gap: 1em;
+  
+  @for $i from 1 through 5 {
+    input:nth-of-type(#{$i}) {
+      @for $n from $i through 1 {
+        &:focus ~ label:nth-of-type(#{$n}),
+        &:hover ~ label:nth-of-type(#{$n}) {
+          cursor: pointer;
+          --bcg: lightgoldenrodyellow;
+          --cheeks: lightgoldenrodyellow;
+          --shadow: lightgoldenrodyellow;
+        }
+        &:checked ~ label:nth-of-type(#{$n}) {
+          --bcg: yellow;
+          --cheeks: yellow;
+          --shadow: yellow;
+        }
+      }
+      &:checked ~ label:nth-of-type(#{$i}) {
+        --bcg: yellow;
+        --cheeks: pink;
+        --shadow: orange;
+        color: black;
+        transform: scale(1.4);
+        @media not all and (prefers-reduced-motion) {
+          animation: animation-#{$i} 500ms ease-in-out;
+        }
+      }
+    }
+  }
+}
+
+@mixin eyes {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: 0.8em;
+  transform: translate(-50%, 5%);
+  width: 100%;
+  height: 100%;
+}
+
+@mixin mouth {display: flex;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: 0.8em;
+  transform: rotate(90deg) translate(-30%, 50%);
+  transform-origin: 50% 50%;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.rateSelector {
+  outline: none;
+  padding: 0.3em;
+  position: relative;
+
+  
+
+  &:hover, &:focus {
+    transform: scale(1.2);
+  }
+  
+  @media not all and (prefers-reduced-motion) {
+    transition: transform 200ms cubic-bezier(0.000, 0.510, 0.000, 1.540);
+  }
+  
+  &:nth-of-type(1) {
+    &::after {
+      content: '>\00a0\00a0<';
+      @include eyes;
+    }
+    &::before {    
+      content: "(";
+      @include mouth;
+    }
+  }
+  &:nth-of-type(2) {
+    &::after {
+      content: '-\00a0\00a0-';
+      @include eyes;
+    }
+    &::before {    
+      content: "|";
+      @include mouth;
+    }
+  }
+  &:nth-of-type(3) {
+    &::after {
+      content: '•\00a0\00a0•';
+      @include eyes;
+    }
+    &::before {    
+      content: ")";
+      @include mouth;
+    }
+  }
+  &:nth-of-type(4) {
+    &::after {
+      content: '•\00a0\00a0•';
+      @include eyes;
+      transform: translateX(-50%);
+    }
+    &::before { 
+      content: "D";
+      @include mouth;
+      transform: rotate(90deg) translate(-34%, 52%);
+    }
+  }
+  &:nth-of-type(5) {
+    &::after {
+      content: '^\00a0\00a0^';
+      @include eyes;
+    }
+    &::before { 
+      content: "D";
+      @include mouth;
+      transform: rotate(90deg) translate(-33%, 52%);
+    }
+  }
+}
+
+.star {
+  width: 100%;
+  path[d^="m42.09"] {
+    fill: var(--bcg);
+  }
+  circle {
+    fill: var(--cheeks);
+  }
+  path[d^="M106.65"] {
+    fill: var(--shadow); 
+  }
+}
+
+
+
+@keyframes animation-1 {
+  0% {
+    transform: translateX(-20%) scale(1.4);
+  }
+  20% {
+    transform: translateX(20%) scale(1.4);
+  }
+  40% {
+    transform: translateX(-10%) scale(1.4);
+  }
+  60% {
+    transform: translateX(10%) scale(1.4);
+  }
+  80% {
+    transform: translateX(-5%) scale(1.4);
+  }
+  100% {
+    transform: translateX(0%) scale(1.4);
+  }
+}
+
+@keyframes animation-2 {
+  0% {
+    transform: translateY(0%) scale(1.4);
+  }
+  10% {
+    transform: translateY(-10%) scale(1.4);
+  }
+  100% {
+    transform: translateY(0%) scale(1.4);
+  }
+}
+
+@keyframes animation-3 {
+  0% {
+    transform: translateY(0%) scale(1.4);
+  }
+  30% {
+    transform: translateY(-5%) scale(1.5);
+  }
+  100% {
+    transform: translateY(0%) scale(1.4);
+  }
+}
+
+@keyframes animation-4 {
+  0% {
+    transform: translateY(0%) scale(1.4);
+  }
+  20% {
+    transform: translateY(-10%) scale(1.4);
+  }
+  30% {
+    transform: translateY(0%) scale(1.4);
+  }
+  50% {
+    transform: translateY(-10%) scale(1.4);
+  }
+  60% {
+    transform: translateY(0%) scale(1.4);
+  }
+  80% {
+    transform: translateY(-10%) scale(1.4);
+  }
+  90% {
+    transform: translateY(0%) scale(1.4);
+  }
+}
+
+@keyframes animation-5 {
+  15% {
+    transform: rotate(180deg) scale(1.4);
+  }
+  30% {
+    transform: rotate(360deg) scale(1.6);
+  }
+  70% {
+    transform: rotate(360deg) translateY(15%) scale(1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1.4);
+  }
+}
+
+h1 {
+	text-transform: none;
+}
+pre {
+	font-size: 1em !important;
+}
