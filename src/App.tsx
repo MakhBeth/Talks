@@ -41,7 +41,7 @@ const template = () => (
   </FlexBox>
 );
 
-const CSSDAY = css`
+const REACTMI = css`
   color: pink;
   padding: 1rem;
   justify-content: center;
@@ -176,7 +176,7 @@ export const neutral: Colors = {
       <Slide>
         <FlexBox height="100%" flexDirection="column">
           <Heading>Questo è un lavoro per...</Heading>
-          <Appear css={css`text-align: center;`}>Css in JS</Appear>
+          <Appear css={css`text-align: center;`}>Css in JS<br /> Sorry Sass</Appear>
         </FlexBox>
       </Slide>
       <Slide>
@@ -210,7 +210,7 @@ export const neutral: Colors = {
                   font-size: 3rem;
                 \`
                 const element = document.createElement("div")
-                element.innerText = "CSS DAY!!!"
+                element.innerText = "REACT MI"
                 element.classList.add(style)
                 document.body.appendChild(element)
               `}</CodePane>
@@ -225,7 +225,7 @@ export const neutral: Colors = {
                     font-weight: bold;
                     font-size: 3rem;
                   `}>
-                  CSS DAY!!!
+                  REACT MI
                 </div></Box>
           </Grid>
         </FlexBox>
@@ -244,7 +244,7 @@ export const neutral: Colors = {
                     font-weight: bold;
                     font-size: 3rem;
                 \`}>
-                  CSS DAY!!!
+                  REACT MI
                 </div>
               `}</CodePane>
             </Box>
@@ -258,7 +258,7 @@ export const neutral: Colors = {
                     font-weight: bold;
                     font-size: 3rem;
                   `}>
-                  CSS DAY!!!
+                  REACT MI
                 </div></Box>
           </Grid>
         </FlexBox>
@@ -276,7 +276,7 @@ export const neutral: Colors = {
               <CodePane language='jsx' highlightRanges={[3]}>{`
                 <div 
                   className={css\`
-                    label: CSSDAY;
+                    label: REACTMI;
                     color: pink;
                     padding: 1rem;
                     justify-content: center;
@@ -284,14 +284,14 @@ export const neutral: Colors = {
                     font-weight: bold;
                     font-size: 3rem;
                 \`}>
-                  CSS DAY!!!
+                  REACT MI
                 </div>
               `}</CodePane>
             </Box>
             <Box css={css`justify-content: center; align-items: center; display: flex;`}>
                 <div 
                   css={css`
-                    label: CSSDAY;
+                    label: REACTMI;
                     color: pink;
                     padding: 1rem;
                     justify-content: center;
@@ -299,7 +299,7 @@ export const neutral: Colors = {
                     font-weight: bold;
                     font-size: 3rem;
                   `}>
-                  CSS DAY!!!
+                  REACT MI
                 </div></Box>
           </Grid>
         </FlexBox>
@@ -315,17 +315,17 @@ export const neutral: Colors = {
           <Grid gridTemplateColumns="70% 30%" gridColumnGap={15} css={css`width: 100%; justify-content: center;`}>
             <Box>
               <CodePane language='jsx' highlightRanges={[3]}>{`
-                const CSSDAY = css\`...\`
+                const REACTMI = css\`...\`
                 <div 
-                  className={CSSDAY}>
-                  CSS DAY!!!
+                  className={REACTMI}>
+                  REACT MI
                 </div>
               `}</CodePane>
             </Box>
             <Box css={css`justify-content: center; align-items: center; display: flex;`}>
                 <div 
-                  css={CSSDAY}>
-                  CSS DAY!!!
+                  css={REACTMI}>
+                  REACT MI
                 </div></Box>
           </Grid>
         </FlexBox>
@@ -359,7 +359,7 @@ export const neutral: Colors = {
                     font-weight: bold;
                     font-size: 3rem;
                 \`}>
-                  CSS DAY!!!
+                  REACT MI
                 </div>
               `}</CodePane>
             </Box>
@@ -373,7 +373,7 @@ export const neutral: Colors = {
                     font-weight: bold;
                     font-size: 3rem;
                   `}>
-                  CSS DAY!!!
+                  REACT MI
                 </div></Box>
           </Grid>
         </FlexBox>
@@ -408,7 +408,7 @@ export const neutral: Colors = {
                       fontWeight: 'bold',
                       fontSize: '3rem',
                     }}>
-                    CSS DAY!!!
+                    REACT MI
                   </div>
               `}</CodePane>
             </Box>
@@ -422,7 +422,7 @@ export const neutral: Colors = {
                   fontWeight: 'bold',
                   fontSize: '3rem',
                 }}>
-                CSS DAY!!!
+                REACT MI
               </div>
             </Box>
           </Grid>
@@ -443,11 +443,11 @@ export const neutral: Colors = {
                   font-weight: bold;
                   font-size: 3rem;
                 \`
-                <Styled>CSS DAY</Styled>
+                <Styled>REACT MI</Styled>
               `}</CodePane>
             </Box>
             <Box css={css`justify-content: center; align-items: center; display: flex;`}>
-              <Styled>CSS DAY!</Styled>
+              <Styled>REACT MI!</Styled>
             </Box>
           </Grid>
         </FlexBox>
@@ -461,27 +461,27 @@ export const neutral: Colors = {
               <CodePane language='jsx'>{`
               <Styled className='qualcosa' css={[
                 css\`
-                  💲{CSSDAY}
+                  💲{REACTMI}
                   color: green;
                 \`,
                 css\`color: blue;\`,
-                CSSDAY
+                REACTMI
               ]}>
-                CSS DAY
+                REACT MI
               </Styled>
               `}</CodePane>
             </Box>
             <Box css={css`justify-content: center; align-items: center; display: flex;`}>
               <Styled className='qualcosa' css={[
                   css`
-                    ${CSSDAY}
+                    ${REACTMI}
                     color: green;
                   `,
                   css`color: blue;`,
-                  CSSDAY
+                  REACTMI
                 ]}
               >
-                CSS DAY
+                REACT MI
               </Styled>
             </Box>
           </Grid>
@@ -506,13 +506,13 @@ export const neutral: Colors = {
               <CodePane language='jsx'>{`
                 const a = css\`color: red; border: 1px solid pink;\`
                 const b = css\`color: pink; padding: 1rem;\`
-                <div css={[a, b]}>CSSDAY</div>
-                <div css={css\`💲{a}💲{b}\`}>CSSDAY</div>
+                <div css={[a, b]}>REACTMI</div>
+                <div css={css\`💲{a}💲{b}\`}>REACTMI</div>
               `}</CodePane>
             </Box>
             <Box css={css`justify-content: center; align-items: center; display: flex; transform: scale(2);`}>
-              <div css={([a, b])}>CSSDAY</div>
-              <div css={css`${a}${b}`}>CSSDAY</div>
+              <div css={([a, b])}>REACTMI</div>
+              <div css={css`${a}${b}`}>REACTMI</div>
             </Box>
           </Grid>
         </FlexBox>
@@ -521,6 +521,7 @@ export const neutral: Colors = {
         <FlexBox height="100%" flexDirection="column">
           <img src="/images/inspect3.png" alt="inspect" />
           <Appear><Text>Classi ripetute? E le performance??!1!</Text></Appear>
+          <Appear>GZip e Brotli to the rescue, above the fold e solo quello necessario</Appear>
         </FlexBox>
       </Slide>
 
@@ -550,8 +551,8 @@ export const neutral: Colors = {
                 }
               \`}>
                 <div>This is</div>
-                <section>CSS</section>
-                <span>DAY!!!</span>
+                <section>REACT</section>
+                <span>MI!!!</span>
               </div>
               `}</CodePane>
             </Box>
@@ -573,8 +574,8 @@ export const neutral: Colors = {
                 }
               `}>
                 <div>This is</div>
-                <section>CSS</section>
-                <span>DAY!!!</span>
+                <section>REACT</section>
+                <span>MI!!!</span>
               </div>
             </Box>
           </Grid>
@@ -597,13 +598,13 @@ export const neutral: Colors = {
                 \`
                 <Styled css={css\`
                   animation: 💲{rotate} 2s linear infinite;
-                \`}>CSS DAY!</Styled>
+                \`}>REACT MI!</Styled>
               `}</CodePane>
             </Box>
             <Box css={css`justify-content: center; align-items: center; display: flex;`}>
               <Styled css={css`
                 animation: ${rotate} 2s linear infinite;
-              `}>CSS DAY!</Styled>
+              `}>REACT MI!</Styled>
             </Box>
           </Grid>
         </FlexBox>
@@ -620,7 +621,7 @@ export const neutral: Colors = {
                   @media (min-width: 20rem) {
                     color: white;
                   }
-                \`}>CSS DAY!</Styled>
+                \`}>REACT MI!</Styled>
               `}</CodePane>
             </Box>
             <Box css={css`justify-content: center; align-items: center; display: flex;`}>
@@ -629,7 +630,7 @@ export const neutral: Colors = {
                 @media (min-width: 20rem) {
                   color: white;
                 }
-              `}>CSS DAY!</Styled>
+              `}>REACT MI!</Styled>
             </Box>
           </Grid>
         </FlexBox>
@@ -892,10 +893,11 @@ const Search = () => {
         <FlexBox height="100%" flexDirection="column">
           <img src="/images/thankyou.gif" alt="grazie" css={css`max-height: 10vw; margin-bottom: 0;`} />
           <Heading>Grazie</Heading>
-          <UnorderedList css={css`margin-top: 0`}>
-            <Appear><ListItem>Matteo <small>per avermi fatto uscire dalla comfort zone e tornare sul palco</small></ListItem></Appear>
-            <Appear><ListItem>Claudia <small>per avermi fatto uscire dalla comfort zone e dato una figlia</small></ListItem></Appear>
-            <Appear><ListItem>Gaia <small>per avermi fatto uscire dalle comfort zone, tutte le comfort zone</small></ListItem></Appear>
+          <UnorderedList css={css`margin-top: 0;`}>
+            <Appear>
+              <ListItem>Claudia <small>per avermi fatto uscire dalla comfort zone e dato una figlia</small></ListItem>
+              <ListItem>Gaia <small>per avermi fatto uscire dalle comfort zone, tutte le comfort zone</small></ListItem>
+            </Appear>
           </UnorderedList>
         </FlexBox>
         </Slide>
